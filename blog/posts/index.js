@@ -8,13 +8,15 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const PORT = 4000
+
 const posts = {};
 
-app.use("/post", (req, res) =>{
+app.get("/posts", (req, res) =>{
     res.send(posts);
-})
+});
 
-app.use("/posts", (req, res) => {
+app.post("/posts", (req, res) => {
     const id = randomBytes(4).toString("hex");
     const { title } = req.body;
     
@@ -27,6 +29,6 @@ app.use("/posts", (req, res) => {
     
 });
 
-app.listen(4000, () => {
-    console.log("Server is running on PORT 4000");
+app.listen(PORT, () => {
+    console.log("Server is running on PORT " + PORT);
 });
