@@ -38,6 +38,12 @@ app.post("/posts/:id/comments", async (req, res) =>{
     res.status(201).send(comments);
 });
 
+app.post('/events', (req, res) =>{
+    console.log('Event Received: ', req.body.type);
+
+    res.send({});
+})
+
 app.listen(PORT, () =>{
     console.log("Server is running on PORT " + PORT)
 })
